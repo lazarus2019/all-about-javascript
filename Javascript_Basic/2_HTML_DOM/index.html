@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        ul {
+            display: none;
+        }
+
+        #search-input:focus~ul {
+            display: block;
+        }
+
+        .containers {
+            text-align: center;
+        }
+
+        .containers div {
+            padding: 10px;
+            border: 1px solid rgb(102, 102, 102);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="h2-box">
+        <h2 class="main-heading" id="heading">
+
+            <span>Heading</span>
+            <span> 2 ID</span>
+        </h2>
+    </div>
+    <h2 class="heading">Heading 2 Class</h2>
+    <h2 class="heading">Heading 2 Class</h2>
+    <h2 class="heading">Heading 2 Class</h2>
+
+    <div class="box">
+        <h2 class="heading-2">Heading in box 1</h2>
+        <!-- box comment -->
+        <h2 class="heading-2 heading--selected">Heading in box 2</h2>
+        <h2 class="heading-2">Heading in box 3</h2>
+        <h2 class="heading-2">Heading in box 4</h2>
+        <h2 class="heading-2">Heading in box 5</h2>
+    </div>
+
+    <div class="neighborhood" onclick="console.log(this.innerText)">
+        <div class="your-house">😎</div>
+        <div class="neighbor-house">🎉</div>
+    </div>
+
+    <div class="component">
+        <h2 class="component__title">Component title</h2>
+    </div>
+
+    <input type="text" name="" class="input-text">
+    <input type="checkbox" name="" class="input-checkbox">
+    <select name="" class="select-box">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+
+    <!-- PREVENT CANCEL EVENT -->
+    <h2>PREVENT CANCEL EVENT</h2>
+    <a href="https://fullstack.edu.vn/">Link 1</a>
+    <a href="https://www.google.com">Link 2</a>
+
+    <input type="text" name="" id="search-input" placeholder="Tìm kiếm...">
+
+    <ul>
+        <li>Javascript</li>
+        <li>Java</li>
+        <li>C#</li>
+        <li>ReactJS</li>
+    </ul>
+
+    <br><br>
+    <div class="containers">
+        <div id="1">
+            1
+            <div id="2">
+                2
+                <div id="3">
+                    3
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button name="alone-button" type="button">Click me!</button>
+    <input name="alone-button" type="button">Click me!</input>
+
+    <input type="checkbox" name="languages" id="" value="korea" checked> Korea
+    <input type="checkbox" name="languages" id="" value="thailand"> Thailand
+    <input type="checkbox" name="languages" id="" value="vietnam"> Vietnam
+    <input type="checkbox" name="languages" id="" value="english" checked> English
+
+    <!-- EVENT LISTENER -->
+    <h2>EVENT LISTENER</h2>
+    <button id="btn">Click me</button>
+</body>
+<script src="./_prevent_cancel_event.js"></script>
+
+</html>
