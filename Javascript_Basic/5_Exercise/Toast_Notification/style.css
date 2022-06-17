@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.toast-container {
+    height: 100vh;
+    display: flex;
+}
+
+.toast-body {
+    margin: auto;
+}
+
+.toast-btn {
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin: 0 10px;
+    background-color: #37db25;
+    cursor: pointer;
+}
+
+.toast-btn.random {
+    background-color: #f57402;
+}
+
+#toast {
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    z-index: 10;
+}
+
+.toast-box {
+    width: 450px;
+    background-color: #fff;
+    border-radius: 4px;
+    border-left-width: 3px;
+    border-left-style: solid;
+    display: flex;
+    align-items: center;
+    padding: 16px 10px;
+    box-shadow: 0 4px 8px rgba(0 0 0 / 20%);
+    margin-bottom: 10px;
+}
+
+@keyframes slideLeft {
+    from{
+        opacity: 0;
+        transform: translateX(calc(100% + 32px));
+    }
+
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    to{
+        opacity: 0;
+    }
+}
+
+.toast-main-icon {
+    margin-right: 12px;
+}
+
+.toast-main-icon i {
+    font-size: 24px;
+}
+
+.toast-content {
+    flex: 1;
+}
+
+.toast-content-heading {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.toast-content-description {
+    font-size: 14px;
+}
+
+.toast-close-icon {
+    width: 30px;
+    text-align: center;
+    cursor: pointer;
+    color: rgb(90, 90, 90);
+}
+
+.toast-box.toast-box--error .toast-main-icon i{
+    color: #ff623d;
+}
+
+.toast-box.toast-box--error {
+    border-color: #ff623d;
+}
+
+.toast-box.toast-box--info .toast-main-icon i{
+    color: #2766f0;
+}
+
+.toast-box.toast-box--info {
+    border-color: #2766f0;
+}
+
+.toast-box.toast-box--warning .toast-main-icon i{
+    color: #ffc021;
+}
+
+.toast-box.toast-box--warning {
+    border-color: #ffc021;
+}
+
+.toast-box.toast-box--success .toast-main-icon i{
+    color: #47d864;
+}
+
+.toast-box.toast-box--success {
+    border-color: #47d864;
+}

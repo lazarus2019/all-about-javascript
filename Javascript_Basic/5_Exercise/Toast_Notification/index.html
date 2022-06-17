@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Notification</title>
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="toast-container">
+        <div class="toast-body">
+            <button class="toast-btn" onclick="showToast()">Show Notification</button>
+            <button class="toast-btn random" onclick="showRandomToast()">Show Random Notification</button>
+        </div>
+    </div>
+
+    <div id="toast">
+    </div>
+
+    <script src="./script.js"></script>
+    <script>
+        function showToast() {
+            ToastNotification('#toast', {
+                title: 'You did it',
+                message: 'Thanks for clicking me! We will be in touch with you shortly.',
+                type: 'success',
+                duration: 3000
+            })
+        }
+
+        function showRandomToast() {
+            const toastsInfo = [
+                {
+                    title: 'Success Message',
+                    message: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus possimus similique iure. Reiciendis, quidem ab.',
+                    type: 'success',
+                    duration: 3000
+                },
+                {
+                    title: 'Error Message',
+                    message: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt beatae dicta quam expedita non nulla, rem placeat. Voluptatum, fugit. Laborum illum ipsa harum facere, alias obcaecati incidunt. Mollitia, a aliquam?',
+                    type: 'error',
+                    duration: 3000
+                },
+                {
+                    title: 'Warning Message',
+                    message: 'TLorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, optio.',
+                    type: 'warning',
+                    duration: 3000
+                },
+                {
+                    title: 'Info Message',
+                    message: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum, voluptas dolorum! Quidem, iure molestiae! Vero aperiam eum et commodi magni.',
+                    type: 'info',
+                    duration: 3000
+                },
+            ]
+
+            const randomNumber = Math.floor(Math.random() * toastsInfo.length)
+            ToastNotification('#toast', toastsInfo[randomNumber])
+        }
+
+    </script>
+</body>
+
+</html>
