@@ -1,0 +1,10 @@
+// https://github.com/typicode/json-server
+
+// Cách cài đặt và khởi chạy JSON server
+/*
+    B1: Tạo thư mục json_server
+    B2: Chạy lệnh trong terminal (npm install -g json-server) trong thư mục vừa tạo
+    B3: Tạo database trong thư mục json_server (VD: db.json)
+    B4: Thêm thuộc tính khởi tạo json server vào phần scripts ("start": "json-server --watch db.json")
+    B5: Chạy lệnh npm start trong thư mục json server
+*/
