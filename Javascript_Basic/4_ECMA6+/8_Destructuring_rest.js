@@ -85,7 +85,12 @@ console.log(firstName, description) // 'Thomas' 'Default description'
 //// Rest
 // Tạo 1 object mới bằng cách loại bỏ function getName
 let {getName, ...newUserInfo} = userInfo
-console.log(userInfo) // {firstName: 'Thomas', age: 25, country: 'Singapore', children: {…}}
+console.log(newUserInfo) // {firstName: 'Thomas', age: 25, country: 'Singapore', children: {…}}
+
+console.log(getName()) // undefined
+//=> Biến this trong getName hiện tại là undefined => không lấy được giá trị
+// Vì thế ta sử dụng phương thức bind để gán this cho hàm getName
+console.log(getName.bind(userInfo)) // 'Thomas'
 
 /* [Function] Rest */
 // Khi sử dụng trong function, rest sẽ trả về 1 mảng hoặc object các giá trị của tham số truyền vào còn lại
