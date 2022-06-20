@@ -34,7 +34,7 @@ function log() {
 //// Phạm vi code block (VD: {})
 {
     const age = 20
-    var age1 = 21
+    var age1 = 21 // IN được ở bên ngoài code block
     let age2 = 22
 
     console.log(age, age1, age2) // 20 21 22
@@ -139,6 +139,7 @@ var text = "in gloal";
 // Kết quả: undefined
 
 /*
+    => Biến text không tìm thấy trong hàm b nên sẽ tìm trong scope cha (ở đây là global)
     => Biến text trong hàm b lấy giá trị từ phần khai báo var text ở phía dưới (do tính chất hoisting)
     => Vì text được gán giá trị ở cuối chương trình nên text trong hàm b mặc đinh là undefined
 */

@@ -121,7 +121,7 @@ const object1 = {
 console.log(Object.getOwnPropertyNames(object1));
 // expected output: Array ["a", "b", "c"]
 
-//// 10. Object.freeze: Ngăn chặn các thuộc tính hiện có bị loại bỏ.
+//// 10. Object.freeze: Ngăn chặn các thuộc tính hiện có bị loại bỏ/thay đổi.
 const obj = {
     prop: 42
 };
