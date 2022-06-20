@@ -7,7 +7,11 @@
 
     get và set
     thuộc tính static: hàm chỉ dùng cho class (với các đối tượng được khởi tạo bởi Class thì phải gọi thông qua Class)
-    extends và super
+    extends: Kế thừa thuộc tính của lớp cha
+    super: overriding hàm (viết lại phương thức của lớp cha)
+        - Trong constructor:
+                + Không muốn override thì không cần thêm phần constructor
+                + Nếu tạo constructor ở class con thì bắt buộc sử dụng từ khóa super ở vị trí đầu tiên để gọi hàm constructor ở lớp cha
 */
 // Tạo khuôn mẫu với Constructor function
 function CourseFn(name, price) {
@@ -109,3 +113,70 @@ class Student extends Person {
 
 let student = new Student(5, 'NOa', 12)
 student.info()
+
+// Sử dụng từ khóa Super
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    run() {
+        console.log(`${this.name} đang chạy`);
+    }
+}
+
+class Rabbit extends Animal {
+    // Override hàm run
+    run() {
+        super.run();
+        this.hide();
+    }
+    hide() {
+        console.log(`${this.name} đang ẩn nấp`);
+    }
+}
+
+let rabbit = new Rabbit("Con thỏ");
+rabbit.run();
+/*
+    kết quả: 
+        'Con thỏ đang chạy'
+        'Con thỏ đang ẩn nấp'
+*/
+// Trong ví dụ này thì phương thức hide đã bị ghi đè lại vì nó được khai báo ngay trong lớp con.
+// Để gọi đến hàm run ở lớp cha thì ta phải sử dụng từ khóa super, nếu không nó sẽ hiểu là bạn đang gọi đếm hàm run ở lớp con.
+// Vì được kế thừa nên thuộc tính name không cần khai báo lại (trừ khi overriding)
+
+//// Sử dụng từ khóa super trong constructor
+// Không dùng constructor
+class Animal {
+    constructor(name) {
+        console.log('Hàm khởi tạo lớp cha');
+    }
+}
+
+class Rabbit extends Animal {
+
+}
+
+let rabbit = new Rabbit(); // 'Hàm khởi tạo lớp cha'
+
+// Muốn override và sử dụng constructor
+class Animal {
+    constructor(name) {
+        console.log('Hàm khởi tạo lớp cha');
+    }
+}
+
+class Rabbit extends Animal {
+    constructor(name, age) {
+        super(name);
+        console.log('Hàm khởi tạo lớp con');
+    }
+}
+
+let rabbit = new Rabbit();
+/*
+    kết quả:
+        'Hàm khởi tạo lớp cha'
+        'Hàm khởi tạo lớp con'
+*/
