@@ -5,6 +5,7 @@
 
     2 Cách loại bỏ tham chiếu khi truyền tham số
         - Tạo 1 object mới để không ảnh hưởng tới object cũ
+        Lưu ý: chỉ key-value ở cấp 1 được tạo vùng nhớ mới, key-value của cấp con được trỏ về object cũ
             VD: 
                 const man1 = { name: "Sanji" }; //#a001
                 const man2 = { ...man1 }; #a002
