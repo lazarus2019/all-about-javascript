@@ -9,9 +9,7 @@
     Fn.call(objectName, parameter1, parameter2,...)
     Tương tự bind, trong đó:
         - objectName: Tên đối tượng muốn ràng buộc vào từ khóa THIS
-        - parameter1, parameter2,...: Là những tham số muốn truyền vào hàm trước .call()
-    
-    Lưu ý: Đối số truyền vào hàm thông qua CALL sẽ được ƯU TIÊN hơn so với gọi hàm và truyền đối số
+        - parameter1, parameter2,...: Là những đối số muốn truyền vào hàm trước .call()
 */
 
 //// Ví dụ: Gọi hàm với call method
