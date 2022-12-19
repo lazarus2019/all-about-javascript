@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Load more - Jquery & Ajax</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .product-container {
+        list-style-type: none;
+        max-width: 600px;
+        width: 100%;
+        margin: 1rem 0;
+      }
+
+      .product-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        background-color: #eee;
+        transition: transform 0.3s ease;
+      }
+      .product-box:hover {
+        transform: scale(1.1);
+      }
+      .product-num {
+        position: absolute;
+        right: calc(100% + 20px);
+        border-radius: 50%;
+        background-color: #eee;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        line-height: 60px;
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+      .product-box + .product-box {
+        margin-top: 1rem;
+      }
+      .product-photo {
+        width: 100px;
+        height: 100px;
+      }
+
+      .product-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+      .product-content {
+        flex: 1 1 0;
+        margin-left: 1rem;
+      }
+      .rating {
+        float: left;
+        margin-top: 0.5rem;
+      }
+      .create-from-now {
+        float: right;
+        margin-top: 0.5rem;
+      }
+      .go-to-top {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        background-color: #eee;
+        cursor: pointer;
+      }
+
+      .loading {
+        display: flex;
+        margin: 1rem auto;
+      }
+      .loading .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #777;
+        animation: jump 0.5s ease-in infinite;
+      }
+
+      .dot + .dot {
+        margin-left: 0.5rem;
+      }
+
+      .dot:nth-of-type(2) {
+        animation-delay: 0.1s;
+      }
+
+      .dot:nth-of-type(3) {
+        animation-delay: 0.2s;
+      }
+
+      @keyframes jump {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div><ul class="product-container"></ul></div>
+
+    <!-- <div class="load-more">Load more</div> -->
+    <div class="loading">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <div class="go-to-top">Go To Top</div>
+
+    <script>
+      // define global variables
+      let productPage = 1;
+      let loadingBtn = document.querySelector(".loading");
+      let productFetching = false;
+      const productContainer = document.querySelector(".product-container");
+
+      getProducts();
+
+      window.addEventListener("scroll", function () {
+        const { scrollTop, scrollHeight, clientHeight } =
+          document.documentElement;
+        // console.log({ scrollTop, scrollHeight, clientHeight });
+
+        if (scrollTop + clientHeight >= scrollHeight - 200) {
+          // show the loading animation
+          showLoading();
+        }
+      });
+
+      function showLoading() {
+        if (productFetching) return;
+        productPage++;
+        getProducts(productPage);
+      }
+
+      async function getProducts(page = 1) {
+        productFetching = true;
+        const productsResponse = await fetch(
+          `https://dummyjson.com/products?limit=10&skip=${(page - 1) * 10}`
+        );
+
+        const data = await productsResponse.json();
+        appendProducts(data.products);
+        productFetching = false;
+      }
+
+      function appendProducts(products) {
+        for (let i = 0; i < products.length; i++) {
+          const productElement = document.createElement("li");
+          productElement.classList.add("product-box");
+
+          productElement.innerHTML = ` <div class="product-num">${
+            (productPage - 1) * 10 + i + 1
+          }</div>
+            <div class="product-photo"><img src="${
+              products[i].thumbnail
+            }" alt=""></div>
+            <div class="product-content">
+                <h3 class="product-title">
+                    ${products[i].title}
+                </h3>
+                <p class="product-description">
+                    ${products[i].description}
+                </p>
+                <p class="rating">
+                     Rating: ${products[i].rating}
+                </p>
+                <p class="create-from-now">
+                     $${products[i].price}
+                </p>
+            </div>`;
+
+          productContainer.appendChild(productElement);
+        }
+      }
+    </script>
+  </body>
+</html>
